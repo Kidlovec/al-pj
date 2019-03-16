@@ -61,10 +61,8 @@ class Solution2 {
             return 0;
         }
 
-        char [] stones = S.toCharArray();
-
         int jewelCnt = 0;
-        for (char stone : stones) {
+        for (char stone : S.toCharArray()) {
             if (J.indexOf(stone) > -1)
                 jewelCnt++;
         }
@@ -83,15 +81,12 @@ class Solution3 {
 
         char[] charArray = new char['z' - 'A' + 1];
 
-        char [] jewels = J.toCharArray();
-        char [] stones = S.toCharArray();
-
         int jewelCnt = 0;
-        for (char stone : stones) {
+        for (char stone : S.toCharArray()) {
             charArray[stone - 'A']++;
         }
 
-        for (char jewel : jewels) {
+        for (char jewel : J.toCharArray()) {
             jewelCnt += charArray[jewel - 'A'];
         }
 
@@ -107,7 +102,6 @@ class Solution4 {
             return 0;
         }
 
-        Set<Character> dataSet = new HashSet<>();
         char [] stones = S.toCharArray();
 
         int jewelCnt = 0;
@@ -117,5 +111,16 @@ class Solution4 {
         }
 
         return jewelCnt;
+    }
+}
+
+class Solution5 {
+    public int numJewelsInStones(String J, String S) {
+        final char[] chars = J.toCharArray();
+        Set<Character> set = new HashSet<>(chars.length);
+        for (char c : chars) set.add(c);
+        int res = 0;
+        for (char c : S.toCharArray()) if (set.contains(c)) res++;
+        return res;
     }
 }
