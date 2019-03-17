@@ -59,3 +59,20 @@ class Solution2 {
         return sb.toString();
     }
 }
+
+class Solution3 {
+    public String toLowerCase(String str) {
+
+        final char[] chars = str.toCharArray();
+        final StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < chars.length; i++) {
+            if (65 <= chars[i] && chars[i] < 91) {
+                chars[i] += 32;
+            }
+
+            sb.append(chars[i]);
+        }
+
+        return new String(chars);
+    }
+}
